@@ -1,60 +1,101 @@
-<x-guest-layout>
-    <x-jet-authentication-card>
-        <x-slot name="logo">
-            <x-jet-authentication-card-logo />
-        </x-slot>
+@extends('layouts.app', ['class' => 'register-page', 'page' => __('Register Page'), 'contentClass' => 'register-page'])
 
-        <x-jet-validation-errors class="mb-4" />
-
-        <form method="POST" action="{{ route('register') }}">
-            @csrf
-
-            <div>
-                <x-jet-label for="name" value="{{ __('Name') }}" />
-                <x-jet-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
-            </div>
-
-            <div class="mt-4">
-                <x-jet-label for="email" value="{{ __('Email') }}" />
-                <x-jet-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
-            </div>
-
-            <div class="mt-4">
-                <x-jet-label for="password" value="{{ __('Password') }}" />
-                <x-jet-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="new-password" />
-            </div>
-
-            <div class="mt-4">
-                <x-jet-label for="password_confirmation" value="{{ __('Confirm Password') }}" />
-                <x-jet-input id="password_confirmation" class="block mt-1 w-full" type="password" name="password_confirmation" required autocomplete="new-password" />
-            </div>
-
-            @if (Laravel\Jetstream\Jetstream::hasTermsAndPrivacyPolicyFeature())
-                <div class="mt-4">
-                    <x-jet-label for="terms">
-                        <div class="flex items-center">
-                            <x-jet-checkbox name="terms" id="terms"/>
-
-                            <div class="ml-2">
-                                {!! __('I agree to the :terms_of_service and :privacy_policy', [
-                                        'terms_of_service' => '<a target="_blank" href="'.route('terms.show').'" class="underline text-sm text-gray-600 hover:text-gray-900">'.__('Terms of Service').'</a>',
-                                        'privacy_policy' => '<a target="_blank" href="'.route('policy.show').'" class="underline text-sm text-gray-600 hover:text-gray-900">'.__('Privacy Policy').'</a>',
-                                ]) !!}
-                            </div>
-                        </div>
-                    </x-jet-label>
+@section('content')
+    <div class="row">
+        <div class="col-md-5 ml-auto">
+            <div class="info-area info-horizontal mt-5">
+                <div class="icon icon-warning">
+                    <i class="tim-icons icon-wifi"></i>
                 </div>
-            @endif
-
-            <div class="flex items-center justify-end mt-4">
-                <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
-                    {{ __('Already registered?') }}
-                </a>
-
-                <x-jet-button class="ml-4">
-                    {{ __('Register') }}
-                </x-jet-button>
+                <div class="description">
+                    <h3 class="info-title">{{ __('Marketing') }}</h3>
+                    <p class="description">
+                        {{ __('We\'ve created the marketing campaign of the website. It was a very interesting collaboration.') }}
+                    </p>
+                </div>
             </div>
-        </form>
-    </x-jet-authentication-card>
-</x-guest-layout>
+            <div class="info-area info-horizontal">
+                <div class="icon icon-primary">
+                    <i class="tim-icons icon-triangle-right-17"></i>
+                </div>
+                <div class="description">
+                    <h3 class="info-title">{{ __('Fully Coded in HTML5') }}</h3>
+                    <p class="description">
+                        {{ __('We\'ve developed the website with HTML5 and CSS3. The client has access to the code using GitHub.') }}
+                    </p>
+                </div>
+            </div>
+            <div class="info-area info-horizontal">
+                <div class="icon icon-info">
+                    <i class="tim-icons icon-trophy"></i>
+                </div>
+                <div class="description">
+                    <h3 class="info-title">{{ __('Built Audience') }}</h3>
+                    <p class="description">
+                        {{ __('There is also a Fully Customizable CMS Admin Dashboard for this product.') }}
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-7 mr-auto">
+            <div class="card card-register card-white">
+                <div class="card-header">
+                    <img class="card-img" src="{{ asset('black') }}/img/card-primary.png" alt="Card image">
+                    <h4 class="card-title">{{ __('Register') }}</h4>
+                </div>
+                <form class="form" method="post" action="{{ route('register') }}">
+                    @csrf
+
+                    <div class="card-body">
+                        <div class="input-group{{ $errors->has('name') ? ' has-danger' : '' }}">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <i class="tim-icons icon-single-02"></i>
+                                </div>
+                            </div>
+                            <input type="text" name="name" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="{{ __('Name') }}">
+                            @include('alerts.feedback', ['field' => 'name'])
+                        </div>
+                        <div class="input-group{{ $errors->has('email') ? ' has-danger' : '' }}">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <i class="tim-icons icon-email-85"></i>
+                                </div>
+                            </div>
+                            <input type="email" name="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" placeholder="{{ __('Email') }}">
+                            @include('alerts.feedback', ['field' => 'email'])
+                        </div>
+                        <div class="input-group{{ $errors->has('password') ? ' has-danger' : '' }}">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <i class="tim-icons icon-lock-circle"></i>
+                                </div>
+                            </div>
+                            <input type="password" name="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" placeholder="{{ __('Password') }}">
+                            @include('alerts.feedback', ['field' => 'password'])
+                        </div>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <i class="tim-icons icon-lock-circle"></i>
+                                </div>
+                            </div>
+                            <input type="password" name="password_confirmation" class="form-control" placeholder="{{ __('Confirm Password') }}">
+                        </div>
+                        <div class="form-check text-left">
+                            <label class="form-check-label">
+                                <input class="form-check-input" type="checkbox">
+                                <span class="form-check-sign"></span>
+                                {{ __('I agree to the') }}
+                                <a href="#">{{ __('terms and conditions') }}</a>.
+                            </label>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <button type="submit" class="btn btn-primary btn-round btn-lg">{{ __('Get Started') }}</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+@endsection
