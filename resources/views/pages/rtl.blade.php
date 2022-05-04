@@ -17,11 +17,17 @@
     <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
     <!-- Icons -->
     <link href="{{ asset('black') }}/css/nucleo-icons.css" rel="stylesheet" />
+
+    <link href="{{ secure_asset('black') }}/css/nucleo-icons.css" rel="stylesheet" />
     <!-- CSS -->
     <link href="{{ asset('black') }}/css/black-dashboard.css?v=1.0.0" rel="stylesheet" />
+
+    <link href="{{ secure_asset('black') }}/css/black-dashboard.css?v=1.0.0" rel="stylesheet" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-rtl/3.4.0/css/bootstrap-rtl.css" rel="stylesheet" />
     <!-- CSS Just for demo purpose, don't include it in your project -->
     <link href="{{ asset('black') }}/demo/demo.css" rel="stylesheet" />
+
+    <link href="{{ secure_asset('black') }}/demo/demo.css" rel="stylesheet" />
 </head>
 
 <body class=" rtl menu-on-right ">
@@ -633,17 +639,26 @@
   <script src="{{ asset('black') }}/js/core/popper.min.js"></script>
   <script src="{{ asset('black') }}/js/core/bootstrap.min.js"></script>
   <script src="{{ asset('black') }}/js/plugins/perfect-scrollbar.jquery.min.js"></script>
+
+  <script src="{{ secure_asset('black') }}/js/core/jquery.min.js"></script>
+  <script src="{{ secure_asset('black') }}/js/core/popper.min.js"></script>
+  <script src="{{ secure_asset('black') }}/js/core/bootstrap.min.js"></script>
+  <script src="{{ secure_asset('black') }}/js/plugins/perfect-scrollbar.jquery.min.js"></script>
   <!--  Google Maps Plugin    -->
   <!-- Place this tag in your head or just before your close body tag. -->
   <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
   <!-- Chart JS -->
   <script src="{{ asset('black') }}/js/plugins/chartjs.min.js"></script>
+  <script src="{{ secure_asset('black') }}/js/plugins/chartjs.min.js"></script>
   <!--  Notifications Plugin    -->
   <script src="{{ asset('black') }}/js/plugins/bootstrap-notify.js"></script>
+  <script src="{{ secure_asset('black') }}/js/plugins/bootstrap-notify.js"></script>
   <!-- Control Center for Black Dashboard: parallax effects, scripts for the example pages etc -->
   <script src="{{ asset('black') }}/js/black-dashboard.min.js?v=1.0.0"></script>
+  <script src="{{ secure_asset('black') }}/js/black-dashboard.min.js?v=1.0.0"></script>
   <!-- Black Dashboard DEMO methods, don't include it in your project! -->
   <script src="{{ asset('black') }}/demo/demo.js"></script>
+  <script src="{{ secure_asset('black') }}/demo/demo.js"></script>
   <script>
     $(document).ready(function() {
       $().ready(function() {
